@@ -5,12 +5,12 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Comments">
+<AnchorPane prefHeight="452.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Comments">
    <children>
-      <TextArea layoutX="47.0" layoutY="65.0" prefHeight="228.0" prefWidth="506.0" promptText="Kommentare" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="65.0" />
-      <TextField layoutX="47.0" layoutY="26.0" promptText="Titel" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="26.0" />
-      <Button layoutX="53.0" layoutY="325.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="53.0" />
-      <Button layoutX="166.0" layoutY="325.0" mnemonicParsing="false" text="Löschen" AnchorPane.bottomAnchor="50.0" AnchorPane.leftAnchor="166.0" />
+      <TextArea layoutX="47.0" layoutY="114.0" prefHeight="228.0" prefWidth="506.0" promptText="Ihr Kommentar" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="114.0" />
+      <TextField layoutX="47.0" layoutY="26.0" prefHeight="25.0" prefWidth="251.0" promptText="Titel" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="26.0" />
+      <Button layoutX="431.0" layoutY="368.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="431.0" />
+      <Button layoutX="523.0" layoutY="368.0" mnemonicParsing="false" text="Löschen" AnchorPane.bottomAnchor="59.0" AnchorPane.leftAnchor="523.0" />
+      <TextField disable="true" layoutX="47.0" layoutY="71.0" prefHeight="25.0" prefWidth="251.0" promptText="Creation Date" AnchorPane.leftAnchor="47.0" AnchorPane.topAnchor="71.0" />
    </children>
 </AnchorPane>
