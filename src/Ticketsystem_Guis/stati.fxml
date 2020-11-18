@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+
+
+<AnchorPane prefHeight="130.0" prefWidth="393.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Stati">
+   <children>
+      <TextField layoutX="14.0" layoutY="24.0" promptText="Status" AnchorPane.leftAnchor="14.0" AnchorPane.topAnchor="24.0" />
+      <Button layoutX="14.0" layoutY="71.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="14.0" />
+      <Button layoutX="116.0" layoutY="71.0" mnemonicParsing="false" text="Löschen" AnchorPane.bottomAnchor="34.0" AnchorPane.leftAnchor="116.0" />
+   </children>
+</AnchorPane>
