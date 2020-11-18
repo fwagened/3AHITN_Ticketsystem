@@ -5,12 +5,11 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ticketsystem_Guis.Order">
+<AnchorPane prefHeight="322.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ticketsystem_Guis.Order">
    <children>
-      <Button layoutX="21.0" layoutY="287.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="21.0" />
-      <Button layoutX="114.0" layoutY="287.0" mnemonicParsing="false" text="Löschen" AnchorPane.bottomAnchor="88.0" AnchorPane.leftAnchor="114.0" />
-      <TextField layoutX="21.0" layoutY="27.0" prefHeight="25.0" prefWidth="245.0" promptText="Name" AnchorPane.bottomAnchor="348.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="334.0" AnchorPane.topAnchor="27.0" />
-      <TextArea layoutX="21.0" layoutY="60.0" prefHeight="201.0" prefWidth="245.0" promptText="Beschreibung" AnchorPane.bottomAnchor="139.0" AnchorPane.leftAnchor="21.0" />
+      <Button layoutX="21.0" layoutY="275.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="21.0" />
+      <Button layoutX="101.0" layoutY="275.0" mnemonicParsing="false" text="Löschen" AnchorPane.bottomAnchor="22.0" AnchorPane.leftAnchor="101.0" />
+      <TextField layoutX="22.0" layoutY="21.0" prefHeight="25.0" prefWidth="245.0" promptText="Name" AnchorPane.leftAnchor="22.0" AnchorPane.topAnchor="21.0" />
+      <TextArea layoutX="21.0" layoutY="60.0" prefHeight="201.0" prefWidth="551.0" promptText="Beschreibung" AnchorPane.leftAnchor="21.0" AnchorPane.topAnchor="60.0" />
    </children>
 </AnchorPane>
