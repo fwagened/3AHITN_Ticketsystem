@@ -5,7 +5,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="119.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ticketsystem_Guis.Priorities">
+<AnchorPane prefHeight="119.0" prefWidth="394.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <TextField layoutX="67.0" layoutY="22.0" prefHeight="25.0" prefWidth="320.0" AnchorPane.leftAnchor="67.0" AnchorPane.topAnchor="22.0" />
       <Button layoutX="318.0" layoutY="82.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="12.0" AnchorPane.rightAnchor="7.0" />
