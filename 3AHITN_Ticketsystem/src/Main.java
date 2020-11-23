@@ -1,5 +1,3 @@
-package applications;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -23,10 +21,10 @@ public class Main extends Application {
      */
     @Override
     public void start(Stage primaryStage) throws Exception {
-        MyFXMLLoader.setPrimaryStage(primaryStage);
-
-        MyFXMLLoader loader = new MyFXMLLoader();
-        loader.loadFXML("view/scene.fxml", "Ticketsystem");
+        Parent root = FXMLLoader.load(getClass().getResource("scene.fxml"));
+        primaryStage.setTitle("Hello World");
+        primaryStage.setScene(new Scene(root));
+        primaryStage.show();
     }
 
     public static void main(String[] args) {
