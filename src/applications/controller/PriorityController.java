@@ -48,7 +48,7 @@ public class PriorityController {
         
     }
 
-    public void loeschenButtonCLicked(ActionEvent actionEvent) {
+    public void abbrechenButtonCLicked(ActionEvent actionEvent) {
 
     }
 }
