@@ -7,6 +7,8 @@ import javafx.event.ActionEvent;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
+import javafx.stage.Stage;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -17,10 +19,12 @@ public class StatusController {
     public Button loeschenButton;
     public Button speichernButton;
     public TextField statusTextfield;
+    public Button abbrechenButton;
 
 
     ObservableList<Status> list = FXCollections.observableArrayList();
 
+    private Status selectedStatus = null;
 
     public void initialize() {
         String s;
@@ -53,5 +57,24 @@ public class StatusController {
     }
 
     public void speichernButtonClicked(ActionEvent actionEvent) {
+    }
+
+    public void abbrechenButtonClicked(ActionEvent actionEvent) {
+        Stage stage = (Stage) abbrechenButton.getScene().getWindow();
+        stage.close();
+
+
+
+    }
+
+    public void listViewClicked(MouseEvent mouseEvent) {
+        Status selected = listViewStati.getSelectionModel().getSelectedItem();
+
+        if (selected != null) {
+            this.selectedStatus = selected;
+
+            statusTextfield.setText(selected.status);
+
+        }
     }
 }
