@@ -77,4 +77,7 @@ public class StatusController {
 
         }
     }
+
+    public void neuButtonClicked(ActionEvent actionEvent) {
+    }
 }
