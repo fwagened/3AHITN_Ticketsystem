@@ -2,19 +2,24 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="433.0" prefWidth="529.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="User">
+<AnchorPane prefHeight="420.0" prefWidth="446.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="applications.controller.UserController">
    <children>
-      <TextField layoutX="23.0" layoutY="27.0" prefHeight="25.0" prefWidth="73.0" promptText="Titel" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="27.0" />
-      <TextField layoutX="111.0" layoutY="27.0" prefHeight="26.0" prefWidth="303.0" promptText="Name" AnchorPane.leftAnchor="111.0" AnchorPane.topAnchor="27.0" />
-      <TextField layoutX="23.0" layoutY="73.0" prefHeight="25.0" prefWidth="228.0" promptText="Straße" AnchorPane.bottomAnchor="335.0" AnchorPane.leftAnchor="23.0" />
-      <TextField layoutX="265.0" layoutY="73.0" prefHeight="26.0" prefWidth="150.0" promptText="PLZ" AnchorPane.bottomAnchor="335.0" AnchorPane.leftAnchor="265.0" />
-      <TextField layoutX="23.0" layoutY="114.0" prefHeight="25.0" prefWidth="228.0" promptText="Stadt" AnchorPane.bottomAnchor="294.0" AnchorPane.leftAnchor="23.0" />
-      <ComboBox layoutX="25.0" layoutY="153.0" prefHeight="29.0" prefWidth="401.0" promptText="Abteilung" AnchorPane.bottomAnchor="251.0" AnchorPane.leftAnchor="25.0" />
-      <Button layoutX="340.0" layoutY="217.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="340.0" />
-      <Button layoutX="437.0" layoutY="217.0" mnemonicParsing="false" text="Löschen" AnchorPane.bottomAnchor="184.0" AnchorPane.leftAnchor="437.0" />
-      <TextField layoutX="274.0" layoutY="113.0" prefHeight="26.0" prefWidth="150.0" promptText="Land" AnchorPane.bottomAnchor="294.0" AnchorPane.leftAnchor="274.0" />
+      <TextField fx:id="titleField" layoutX="106.0" layoutY="198.0" prefHeight="25.0" prefWidth="73.0" promptText="Titel" AnchorPane.bottomAnchor="197.0" AnchorPane.leftAnchor="106.0" AnchorPane.rightAnchor="267.0" AnchorPane.topAnchor="198.0" />
+      <TextField fx:id="nameField" layoutX="191.0" layoutY="196.0" prefHeight="26.0" prefWidth="228.0" promptText="Name" AnchorPane.bottomAnchor="198.0" AnchorPane.leftAnchor="191.0" AnchorPane.rightAnchor="27.0" AnchorPane.topAnchor="196.0" />
+      <TextField fx:id="streetField" layoutX="28.0" layoutY="242.0" prefHeight="25.0" prefWidth="228.0" promptText="Straße" AnchorPane.bottomAnchor="153.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="242.0" />
+      <TextField fx:id="plzField" layoutX="270.0" layoutY="242.0" prefHeight="26.0" prefWidth="150.0" promptText="PLZ" AnchorPane.bottomAnchor="152.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="242.0" />
+      <TextField fx:id="cityField" layoutX="28.0" layoutY="283.0" prefHeight="25.0" prefWidth="228.0" promptText="Stadt" AnchorPane.bottomAnchor="112.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="190.0" AnchorPane.topAnchor="283.0" />
+      <ComboBox fx:id="abteilungBox" layoutX="28.0" layoutY="323.0" prefHeight="29.0" prefWidth="393.0" promptText="Abteilung" AnchorPane.bottomAnchor="68.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="323.0" />
+      <TextField fx:id="landField" layoutX="270.0" layoutY="283.0" prefHeight="26.0" prefWidth="150.0" promptText="Land" AnchorPane.bottomAnchor="111.0" AnchorPane.leftAnchor="270.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="283.0" />
+      <Button layoutX="272.0" layoutY="382.0" mnemonicParsing="false" onAction="#saveButtonClicked" text="Speichern" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="272.0" AnchorPane.rightAnchor="105.0" AnchorPane.topAnchor="382.0" />
+      <Button fx:id="abbrechenButton" layoutX="347.0" layoutY="382.0" mnemonicParsing="false" onAction="#abbrechenButtonCLicked" text="Abbrechen" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="347.0" AnchorPane.rightAnchor="25.0" AnchorPane.topAnchor="382.0" />
+      <Button fx:id="neuButton" layoutX="159.0" layoutY="382.0" mnemonicParsing="false" onAction="#neuButtonCLicked" text="Neu" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="159.0" AnchorPane.rightAnchor="248.0" AnchorPane.topAnchor="382.0" />
+      <Button fx:id="loeschenButton1" layoutX="205.0" layoutY="382.0" mnemonicParsing="false" onAction="#loeschenButtonCLicked" text="Löschen" AnchorPane.bottomAnchor="13.0" AnchorPane.leftAnchor="205.0" AnchorPane.rightAnchor="181.0" AnchorPane.topAnchor="382.0" />
+      <ListView fx:id="listViewUser" layoutX="27.0" layoutY="14.0" onMouseClicked="#listViewClicked" prefHeight="164.0" prefWidth="393.0" AnchorPane.bottomAnchor="242.0" AnchorPane.leftAnchor="27.0" AnchorPane.rightAnchor="26.0" AnchorPane.topAnchor="14.0" />
+      <TextField fx:id="idField" layoutX="28.0" layoutY="198.0" prefHeight="25.0" prefWidth="73.0" promptText="Id" AnchorPane.bottomAnchor="197.0" AnchorPane.leftAnchor="28.0" AnchorPane.rightAnchor="345.0" AnchorPane.topAnchor="198.0" />
    </children>
 </AnchorPane>

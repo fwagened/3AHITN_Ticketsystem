@@ -14,4 +14,9 @@ public class Controller {
         MyFXMLLoader loader = new MyFXMLLoader();
         loader.loadFXML("view/priorities.fxml", "Prioritäten bearbeiten");
     }
+
+    public void editUsersClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        loader.loadFXML("view/user.fxml", "Users bearbeiten");
+    }
 }
