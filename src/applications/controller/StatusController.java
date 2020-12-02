@@ -48,6 +48,7 @@ public class StatusController {
                 br.close();
             }
         } catch (IOException io) {
+            io.printStackTrace();
         }
 
         listViewStati.setItems(list);

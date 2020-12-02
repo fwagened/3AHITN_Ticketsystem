@@ -2,14 +2,18 @@
 
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="124.0" prefWidth="441.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Department">
+<AnchorPane prefHeight="308.0" prefWidth="455.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="applications.controller.DepartmentController">
    <children>
-      <TextField layoutX="92.0" layoutY="14.0" prefHeight="25.0" prefWidth="329.0" promptText="DepartmentName" AnchorPane.leftAnchor="92.0" AnchorPane.topAnchor="14.0" />
-      <Button layoutX="243.0" layoutY="74.0" mnemonicParsing="false" text="Speichern" AnchorPane.bottomAnchor="25.0" AnchorPane.leftAnchor="243.0" />
-      <Button layoutX="326.0" layoutY="74.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="69.0" text="Löschen" AnchorPane.bottomAnchor="25.0" AnchorPane.rightAnchor="26.0" />
-      <Label layoutX="23.0" layoutY="18.0" text="Abteilung" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="18.0" />
+      <TextField fx:id="abteilungTextfield" layoutX="107.0" layoutY="220.0" prefHeight="25.0" prefWidth="329.0" promptText="AbteilungsName" />
+      <Button fx:id="speichernButton" layoutX="203.0" layoutY="261.0" mnemonicParsing="false" onAction="#speichernButtonClicked" text="Speichern" />
+      <Button fx:id="loeschenButton" layoutX="284.0" layoutY="261.0" mnemonicParsing="false" onAction="#loeschenButtonlicked" prefHeight="25.0" prefWidth="69.0" text="Löschen" />
+      <Label layoutX="40.0" layoutY="224.0" text="Abteilung" />
+      <Button fx:id="abbrechenButton" layoutX="359.0" layoutY="261.0" mnemonicParsing="false" onAction="#abbrechenButtonClicked" text="Abbrechern" />
+      <Button fx:id="neuButton" layoutX="154.0" layoutY="261.0" mnemonicParsing="false" onAction="#neuButtonClicked" text="Neu" />
+      <ListView fx:id="listViewAbteilung" layoutX="60.0" layoutY="26.0" onMouseClicked="#listViewDepartmentClicked" prefHeight="168.0" prefWidth="377.0" />
    </children>
 </AnchorPane>

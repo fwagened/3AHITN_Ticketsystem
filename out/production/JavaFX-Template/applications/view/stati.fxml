@@ -9,10 +9,11 @@
 <AnchorPane prefHeight="242.0" prefWidth="450.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="applications.controller.StatusController">
    <children>
       <TextField fx:id="statusTextfield" layoutX="111.0" layoutY="167.0" prefHeight="25.0" prefWidth="529.0" AnchorPane.leftAnchor="111.0" AnchorPane.rightAnchor="22.0" AnchorPane.topAnchor="167.0" />
-      <Button fx:id="speichernButton" layoutX="310.0" layoutY="96.0" mnemonicParsing="false" onAction="#speichernButtonClicked" text="Speichern" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="14.0" />
-      <Button fx:id="loeschenButton" layoutX="239.0" layoutY="96.0" mnemonicParsing="false" onAction="#loeschenButtonClicked" text="Löschen" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="94.0" />
+      <Button fx:id="speichernButton" layoutX="278.0" layoutY="209.0" mnemonicParsing="false" onAction="#speichernButtonClicked" text="Speichern" AnchorPane.bottomAnchor="8.0" AnchorPane.rightAnchor="103.0" />
+      <Button fx:id="loeschenButton" layoutX="210.0" layoutY="208.0" mnemonicParsing="false" onAction="#loeschenButtonClicked" text="Löschen" AnchorPane.bottomAnchor="9.0" AnchorPane.rightAnchor="180.0" />
       <Label layoutX="23.0" layoutY="167.0" prefHeight="25.0" prefWidth="69.0" text="Status:" AnchorPane.leftAnchor="23.0" AnchorPane.topAnchor="167.0" />
       <ListView fx:id="listViewStati" layoutX="26.0" layoutY="32.0" onMouseClicked="#listViewClicked" prefHeight="119.0" prefWidth="398.0" />
-      <Button fx:id="abbrechenButton" layoutX="207.0" layoutY="208.0" mnemonicParsing="false" onAction="#abbrechenButtonClicked" text="Abbrechen" />
+      <Button fx:id="abbrechenButton" layoutX="356.0" layoutY="209.0" mnemonicParsing="false" onAction="#abbrechenButtonClicked" text="Abbrechen" />
+      <Button fx:id="neuButton" layoutX="159.0" layoutY="208.0" mnemonicParsing="false" onAction="#neuButtonClicked" text="Neu" />
    </children>
 </AnchorPane>

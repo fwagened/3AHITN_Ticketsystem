@@ -70,4 +70,10 @@ public class PriorityController {
     public void saveButtonClicked(ActionEvent actionEvent) {
         
     }
+
+    public void neuButtonCLicked(ActionEvent actionEvent) {
+    }
+
+    public void loeschenButtonCLicked(ActionEvent actionEvent) {
+    }
 }
