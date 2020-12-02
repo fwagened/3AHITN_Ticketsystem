@@ -18,6 +18,8 @@ public class PriorityController {
     public TextField prioritiTextField;
     public ListView<Priority> listViewPriorities;
     public Button abbrechenButton;
+    public Button neuButton;
+    public Button loeschenButton1;
 
     ObservableList<Priority> list = FXCollections.observableArrayList();
 
@@ -69,11 +71,5 @@ public class PriorityController {
 
     public void saveButtonClicked(ActionEvent actionEvent) {
         
-    }
-
-    public void neuButtonCLicked(ActionEvent actionEvent) {
-    }
-
-    public void loeschenButtonCLicked(ActionEvent actionEvent) {
     }
 }
