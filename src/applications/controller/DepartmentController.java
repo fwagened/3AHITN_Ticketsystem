@@ -1,6 +1,7 @@
 package applications.controller;
 
 import applications.model.Department;
+import applications.model.Status;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -29,33 +30,10 @@ public class DepartmentController {
     private Department selectedDepartment = null;
 
 
-    public void initialize() {
-        String s;
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader("departments.csv"));
-            try {
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Department department = new Department();
-
-                    String[] words = s.split(";");
-                    department.departmentId = Integer.parseInt(words[0]);
-                    department.departmentName = words[1];
-
-                    list.add(department);
-                }
-            } finally {
-                br.close();
-            }
-        } catch (IOException io) {
-            io.printStackTrace();
-        }
-
-        listViewAbteilung.setItems(list);
+    public void initialize () {
+        listViewAbteilung.setItems(Department.loadFile());
     }
+
 
 
 

@@ -22,37 +22,13 @@ public class StatusController {
     public Button abbrechenButton;
 
 
-    ObservableList<Status> list = FXCollections.observableArrayList();
+    public void initialize () {
+        listViewStati.setItems(Status.loadFile());
+    }
+
 
     private Status selectedStatus = null;
 
-    public void initialize() {
-        String s;
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader("stati.csv"));
-            try {
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Status status = new Status();
-
-                    String[] words = s.split(";");
-                    status.id = Integer.parseInt(words[0]);
-                    status.status = words[1];
-
-                    list.add(status);
-                }
-            } finally {
-                br.close();
-            }
-        } catch (IOException io) {
-            io.printStackTrace();
-        }
-
-        listViewStati.setItems(list);
-    }
 
     public void loeschenButtonClicked(ActionEvent actionEvent) {
     }
