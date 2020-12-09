@@ -21,35 +21,10 @@ public class PriorityController {
     public Button neuButton;
     public Button loeschenButton1;
 
-    ObservableList<Priority> list = FXCollections.observableArrayList();
-
     private Priority selectedPriority = null;
 
     public void initialize() {
-        String s;
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader("priorities.csv"));
-            try {
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Priority p = new Priority();
-
-                    String[] words = s.split(";");
-                    p.id = Integer.parseInt(words[0]);
-                    p.name = words[1];
-
-                    list.add(p); // füge Artikel zur Liste hinzu
-                }
-            } finally {
-                br.close();
-            }
-        } catch (IOException io) {
-        }
-
-        listViewPriorities.setItems(list);
+        listViewPriorities.setItems(Priority.loadFile());
     }
 
 
@@ -71,5 +46,11 @@ public class PriorityController {
 
     public void saveButtonClicked(ActionEvent actionEvent) {
         
+    }
+
+    public void neuButtonCLicked(ActionEvent actionEvent) {
+    }
+
+    public void loeschenButtonCLicked(ActionEvent actionEvent) {
     }
 }

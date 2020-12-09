@@ -29,43 +29,11 @@ public class UserController {
     public ListView<User> listViewUser;
     public TextField idField;
 
-    ObservableList<User> list = FXCollections.observableArrayList();
-
     private User selectedUser = null;
 
-    public void initialize() {
-        String s;
-        BufferedReader br = null;
-
-        try {
-            br = new BufferedReader(new FileReader("users.csv"));
-            try {
-                while ((s = br.readLine()) != null) {
-                    // s enthält die gesamte Zeile
-                    s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    User u = new User();
-
-                    String[] words = s.split(";");
-                    u.id = Integer.parseInt(words[0]);
-                    u.title = words[1];
-                    u.name = words[2];
-                    u.street = words[3];
-                    u.plz = Integer.parseInt(words[4]);
-                    u.city = words[5];
-                    u.land = words[6];
-                    u.abteilung = Integer.parseInt(words[7]);
-
-                    list.add(u); // füge Artikel zur Liste hinzu
-                }
-            } finally {
-                br.close();
-            }
-        } catch (IOException io) {
-        }
-
-        listViewUser.setItems(list);
+    public void initialize () {
+        listViewUser.setItems(User.loadFile());
     }
-
 
     public void listViewClicked(MouseEvent mouseEvent) {
         User selected = listViewUser.getSelectionModel().getSelectedItem();
