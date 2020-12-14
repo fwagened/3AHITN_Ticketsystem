@@ -6,6 +6,8 @@ import javafx.scene.Scene;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 
+import java.io.IOException;
+
 public class MyFXMLLoader {
 
     private static Stage primaryStage = null;
@@ -40,18 +42,18 @@ public class MyFXMLLoader {
         }
     }
 
-    public Parent loadFXML(String fxmlPath) {​​​​
+    public Parent loadFXML(String fxmlPath) {
         Parent result = null;
-        try {​​​​
+        try {
             FXMLLoader fxmlLoader = new FXMLLoader(getClass().getResource(fxmlPath));
             result = fxmlLoader.load();
             controller = fxmlLoader.getController();
-        }​​​​ catch (Exception e) {​​​​
-            e.printStackTrace();
-        }​​​​
 
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
         return result;
-    }​​​​
+    }
 
     public Stage getActualStage() {
         return actualStage;
