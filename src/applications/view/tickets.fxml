@@ -6,7 +6,7 @@
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="381.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Ticketsystem_Guis.Tickets">
+<AnchorPane prefHeight="381.0" prefWidth="583.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="applications.controller.TicketsController">
    <children>
       <TextField layoutX="26.0" layoutY="21.0" prefHeight="25.0" prefWidth="532.0" promptText="Name" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="21.0" />
       <ComboBox layoutX="26.0" layoutY="269.0" prefWidth="150.0" promptText="Priorität" AnchorPane.leftAnchor="26.0" AnchorPane.topAnchor="269.0" />
