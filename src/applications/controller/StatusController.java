@@ -23,7 +23,7 @@ public class StatusController {
 
 
     public void initialize () {
-        listViewStati.setItems(Status.loadFile());
+        listViewStati.setItems(Status.loadFile("stati.csv"));
     }
 
 

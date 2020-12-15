@@ -7,44 +7,45 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class Status {
+public class Ticket {
     public int id;
-    public String status;
+    public String name;
+    public String berschreibung;
+    public int status;
+    public int priorität;
 
-    @Override
     public String toString() {
-        return id + " - " + status;
+        return id + " - " + name;
     }
 
-    public static ObservableList<Status> loadFile(String filename) {
-        ObservableList<Status> result = FXCollections.observableArrayList();
+    public static ObservableList<Ticket> loadFile() {
+        ObservableList<Ticket> result = FXCollections.observableArrayList();
         String s;
         BufferedReader br = null;
 
         try {
-            br = new BufferedReader(new FileReader("stati.csv"));
+            br = new BufferedReader(new FileReader("tickets.csv"));
             try {
                 while ((s = br.readLine()) != null) {
                     // s enthält die gesamte Zeile
                     s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Status status = new Status();
+                    Ticket t = new Ticket();
 
                     String[] words = s.split(";");
-                    status.id = Integer.parseInt(words[0]);
-                    status.status = words[1];
+                    t.id = Integer.parseInt(words[0]);
+                    t.name = words[1];
+                    t.berschreibung = words[2];
+                    t.status = Integer.parseInt(words[3]);
+                    t.priorität = Integer.parseInt(words[4]);
 
-                    result.add(status);
+                    result.add(t);
                 }
             } finally {
                 br.close();
             }
         } catch (IOException io) {
-            io.printStackTrace();
         }
 
         return result;
     }
-
-
 }
-

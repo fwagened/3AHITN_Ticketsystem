@@ -15,7 +15,7 @@ public class Priority {
         return id + " - " + name;
     }
 
-    public static ObservableList<Priority> loadFile() {
+    public static ObservableList<Priority> loadFile(String filename) {
         ObservableList<Priority> result = FXCollections.observableArrayList();
         String s;
         BufferedReader br = null;
