@@ -18,7 +18,7 @@ public class Ticket {
         return id + " - " + name;
     }
 
-    public static ObservableList<Ticket> loadFile() {
+    public static ObservableList<Ticket> loadFile(String filename) {
         ObservableList<Ticket> result = FXCollections.observableArrayList();
         String s;
         BufferedReader br = null;
