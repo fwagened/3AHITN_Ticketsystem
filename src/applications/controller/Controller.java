@@ -15,6 +15,10 @@ import javafx.scene.input.KeyEvent;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 
+import java.io.BufferedWriter;
+import java.io.FileWriter;
+import java.io.IOException;
+
 public class Controller {
 
     public ListView<Ticket> ticketListView;
@@ -32,8 +36,7 @@ public class Controller {
     ObservableList<Ticket> list = FXCollections.observableArrayList();
     ObservableList<Ticket> searchlist = FXCollections.observableArrayList();
 
-    ObservableList<Priority> priorityList = FXCollections.observableArrayList();
-    ObservableList<Priority> prioritySearchlist = FXCollections.observableArrayList();
+    private Ticket selectedTicket = null;
 
     public void editStatiClicked(ActionEvent actionEvent) {
         MyFXMLLoader loader = new MyFXMLLoader();
@@ -136,5 +139,40 @@ public class Controller {
     public void saveClicked(ActionEvent actionEvent) {
         //Wenn Ticket neu -> laden des Tickets hinzufügen zur Liste
         //Datei aktualisieren
+
+        if (this.active != null) {
+            selectedTicket.id = Integer.toString(active.nameField.getText());
+            selectedTicket.name = active.nameField.getText();
+            selectedTicket.berschreibung = active.beschreibungsFeld.getText();
+            selectedTicket.prioritaet = active.priorityBox.getItems();
+
+            ticketListView.refresh();
+            ticketListView.setItems(list);
+        } else {
+            Ticket newTicket = new Ticket();
+
+            newTicket.id = Integer.toString(active.nrField.getText());
+            newTicket.name = active.nameField.getText();
+            newTicket.berschreibung = active.beschreibungsFeld.getText();
+            newTicket.prioritaet = active.priorityBox.getItems();
+
+            list.add(newTicket);
+        }
+        writeTicketToFile();
+    }
+
+    private void writeTicketToFile() {
+        try {
+            BufferedWriter bw = new BufferedWriter(new FileWriter("tickets.csv"));
+
+            for (Ticket t : list) {
+                bw.write(t.newCSVLine());
+            }
+            bw.flush();
+            bw.close();
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }

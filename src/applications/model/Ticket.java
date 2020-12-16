@@ -48,4 +48,8 @@ public class Ticket {
 
         return result;
     }
+
+    public String newCSVLine(){
+        return id + ";" + name + ";" + berschreibung + ";" + prioritaet + ";" + status;
+    }
 }
