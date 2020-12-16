@@ -16,10 +16,6 @@ public class TicketsController {
     public ComboBox statusBox;
     public TextArea beschreibungsFeld;
     public TextField nrField;
-    public Button abbrechenButton;
-    public Button saveButton;
-    public Button neuButton;
-    public Button loeschenButton1;
 
     public void setTicket(Ticket t) {
         nrField.setText(Integer.toString(t.id));
@@ -31,21 +27,5 @@ public class TicketsController {
         statusBox.setItems(Status.loadFile("stati.csv"));
     }
 
-    public void saveButtonClicked(ActionEvent actionEvent) {
 
-    }
-
-    public void abbrechenButtonCLicked(ActionEvent actionEvent) {
-        Stage stage = (Stage) abbrechenButton.getScene().getWindow();
-
-        stage.close();
-    }
-
-    public void neuButtonCLicked(ActionEvent actionEvent) {
-
-    }
-
-    public void loeschenButtonCLicked(ActionEvent actionEvent) {
-
-    }
 }

@@ -28,6 +28,8 @@ public class Controller {
     public ComboBox<Status> filterStatusComboBox;
     public ComboBox<Priority> filterPrioritätComboBox;
 
+    private TicketsController active = null;
+
     ObservableList<Ticket> list = FXCollections.observableArrayList();
     ObservableList<Ticket> searchlist = FXCollections.observableArrayList();
 
@@ -68,8 +70,8 @@ public class Controller {
         Parent root = loader.loadFXML("view/tickets.fxml");
         contentPane.getChildren().add(root);
 
-        TicketsController controller = (TicketsController) loader.getController();
-        controller.setTicket(ticketListView.getSelectionModel().getSelectedItem());
+       active = (TicketsController) loader.getController();
+       active.setTicket(ticketListView.getSelectionModel().getSelectedItem());
     }
 
     public void searchTicket(KeyEvent keyEvent) {
@@ -89,7 +91,7 @@ public class Controller {
 
     }
 
-    public void searchPriorität(MouseEvent mouseEvent) {
+    public void searchPrioritaet(MouseEvent mouseEvent) {
         String searchedItem = filterPrioritätComboBox.getItems();
         searchlist.clear();
 
@@ -100,5 +102,33 @@ public class Controller {
 
         }
         ticketListView.setItems(searchlist);
+    }
+
+    public void newClicked(ActionEvent actionEvent) {
+        MyFXMLLoader loader = new MyFXMLLoader();
+        Parent root = loader.loadFXML("view/ticket.fxml");
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setTopAnchor(root, 0.0);
+        AnchorPane.setLeftAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
+        contentPane.getChildren().add(root);
+
+        active = (TicketsController) loader.getController();
+        active.setTicket(null);
+
+    }
+
+    public void deleteClicked(ActionEvent actionEvent) {
+        //laden des Tickets
+        //entfernen aus liste
+        //Datei aktualisieren
+
+
+
+    }
+
+    public void saveClicked(ActionEvent actionEvent) {
+        //Wenn Ticket neu -> laden des Tickets hinzufügen zur Liste
+        //Datei aktualisieren
     }
 }
