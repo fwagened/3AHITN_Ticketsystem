@@ -3,21 +3,16 @@ package applications.controller;
 import applications.model.Priority;
 import applications.model.Status;
 import applications.model.Ticket;
-import javafx.scene.control.Button;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
 public class TicketsController {
     public TextField nameField;
-    public ComboBox priorityBox;
-    public ComboBox statusBox;
+    public ComboBox<Priority> priorityBox;
+    public ComboBox<Status> statusBox;
     public TextArea beschreibungsFeld;
     public TextField nrField;
-    public Button abbrechenButton;
-    public Button saveButton;
-    public Button neuButton;
-    public Button loeschenButton1;
     private Ticket ticket;
 
     public void setTicket(Ticket t) {
@@ -39,7 +34,7 @@ public class TicketsController {
         }
 
         for (Priority p : priorityBox.getItems()) {
-            if (p.id == t.priorität) {
+            if (p.id == t.prioritaet) {
                 priorityBox.getSelectionModel().select(p);
                 break;
             }

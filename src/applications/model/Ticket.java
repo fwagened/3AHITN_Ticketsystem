@@ -12,7 +12,7 @@ public class Ticket {
     public String name;
     public String berschreibung;
     public int status;
-    public int priorität;
+    public int prioritaet;
 
     public String toString() {
         return id + " - " + name;
@@ -36,7 +36,7 @@ public class Ticket {
                     t.name = words[1];
                     t.berschreibung = words[2];
                     t.status = Integer.parseInt(words[3]);
-                    t.priorität = Integer.parseInt(words[4]);
+                    t.prioritaet = Integer.parseInt(words[4]);
 
                     result.add(t);
                 }

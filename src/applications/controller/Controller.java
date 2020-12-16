@@ -7,7 +7,6 @@ import applications.model.Ticket;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.ComboBox;
 import javafx.scene.control.ListView;
@@ -88,18 +87,25 @@ public class Controller {
     }
 
     public void searchStatus(MouseEvent mouseEvent) {
-
-    }
-
-    public void searchPrioritaet(MouseEvent mouseEvent) {
-        String searchedItem = filterPrioritätComboBox.getItems();
+        Status searchedItem = filterStatusComboBox.getValue();
         searchlist.clear();
 
         for (Ticket t : list) {
-            if (t.name.contains(searchedItem) || Integer.toString(t.id).contains(searchedItem)) {
+            if (t.status == searchedItem.id) {
                 searchlist.add(t);
             }
+        }
+        ticketListView.setItems(searchlist);
+    }
 
+    public void searchPrioritaet(MouseEvent mouseEvent) {
+        Priority searchedItem = filterPrioritätComboBox.getValue();
+        searchlist.clear();
+
+        for (Ticket t : list) {
+            if (t.prioritaet == searchedItem.id) {
+                searchlist.add(t);
+            }
         }
         ticketListView.setItems(searchlist);
     }
