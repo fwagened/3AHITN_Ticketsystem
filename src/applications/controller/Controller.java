@@ -31,12 +31,12 @@ public class Controller {
     public ComboBox<Status> filterStatusComboBox;
     public ComboBox<Priority> filterPrioritätComboBox;
 
-    private TicketsController active = null;
+    public TicketsController active = null;
 
     ObservableList<Ticket> list = FXCollections.observableArrayList();
     ObservableList<Ticket> searchlist = FXCollections.observableArrayList();
 
-    private Ticket selectedTicket = null;
+    public Ticket selectedTicket = null;
 
     public void editStatiClicked(ActionEvent actionEvent) {
         MyFXMLLoader loader = new MyFXMLLoader();
@@ -70,10 +70,20 @@ public class Controller {
 
         MyFXMLLoader loader = new MyFXMLLoader();
         Parent root = loader.loadFXML("view/tickets.fxml");
+
+        AnchorPane.setBottomAnchor(root, 0.0);
+        AnchorPane.setTopAnchor(root, 0.0);
+        AnchorPane.setLeftAnchor(root, 0.0);
+        AnchorPane.setRightAnchor(root, 0.0);
+
         contentPane.getChildren().add(root);
+
 
        active = (TicketsController) loader.getController();
        active.setTicket(ticketListView.getSelectionModel().getSelectedItem());
+
+       Ticket selected = ticketListView.getSelectionModel().getSelectedItem();
+       this.selectedTicket = selected;
     }
 
     public void searchTicket(KeyEvent keyEvent) {
@@ -114,8 +124,9 @@ public class Controller {
     }
 
     public void newClicked(ActionEvent actionEvent) {
+        contentPane.getChildren().clear();
         MyFXMLLoader loader = new MyFXMLLoader();
-        Parent root = loader.loadFXML("view/ticket.fxml");
+        Parent root = loader.loadFXML("view/tickets.fxml");
         AnchorPane.setBottomAnchor(root, 0.0);
         AnchorPane.setTopAnchor(root, 0.0);
         AnchorPane.setLeftAnchor(root, 0.0);
@@ -123,7 +134,11 @@ public class Controller {
         contentPane.getChildren().add(root);
 
         active = (TicketsController) loader.getController();
-        active.setTicket(null);
+        active.nrField.clear();
+        active.nameField.clear();
+        active.beschreibungsFeld.clear();
+        active.statusBox.setItems(null);
+        active.priorityBox.setItems(null);
 
     }
 
@@ -137,27 +152,25 @@ public class Controller {
     }
 
     public void saveClicked(ActionEvent actionEvent) {
-        //Wenn Ticket neu -> laden des Tickets hinzufügen zur Liste
-        //Datei aktualisieren
-
         if (this.active != null) {
-            selectedTicket.id = Integer.toString(active.nameField.getText());
+            selectedTicket.id = Integer.parseInt(active.nrField.getText());
             selectedTicket.name = active.nameField.getText();
             selectedTicket.berschreibung = active.beschreibungsFeld.getText();
-            selectedTicket.prioritaet = active.priorityBox.getItems();
-
-            ticketListView.refresh();
-            ticketListView.setItems(list);
+            selectedTicket.prioritaet = active.priorityBox.getSelectionModel().getSelectedItem().id;
+            selectedTicket.status = active.statusBox.getSelectionModel().getSelectedItem().id;
         } else {
             Ticket newTicket = new Ticket();
 
-            newTicket.id = Integer.toString(active.nrField.getText());
+            newTicket.id = Integer.parseInt(active.nrField.getText());
             newTicket.name = active.nameField.getText();
             newTicket.berschreibung = active.beschreibungsFeld.getText();
-            newTicket.prioritaet = active.priorityBox.getItems();
+            newTicket.prioritaet = active.priorityBox.getSelectionModel().getSelectedItem().id;
+            newTicket.status = active.statusBox.getSelectionModel().getSelectedItem().id;
 
-            list.add(newTicket);
+            ticketListView.getItems().add(newTicket);
         }
+        ticketListView.refresh();
+
         writeTicketToFile();
     }
 
