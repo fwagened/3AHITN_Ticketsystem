@@ -137,8 +137,10 @@ public class Controller {
         active.nrField.clear();
         active.nameField.clear();
         active.beschreibungsFeld.clear();
-        active.statusBox.setItems(null);
-        active.priorityBox.setItems(null);
+        active.statusBox.setItems(Status.loadFile("stati.csv"));
+        active.priorityBox.setItems(Priority.loadFile("priorities.csv"));
+
+        this.selectedTicket = null;
 
     }
 
@@ -147,17 +149,30 @@ public class Controller {
         //entfernen aus liste
         //Datei aktualisieren
 
+        active.nrField.clear();
+        active.nameField.clear();
+        active.beschreibungsFeld.clear();
+        active.statusBox.setItems(null);
+        active.priorityBox.setItems(null);
 
+        list.remove(selectedTicket);
 
+        ticketListView.refresh();
+
+        writeTicketToFile();
     }
 
     public void saveClicked(ActionEvent actionEvent) {
-        if (this.active != null) {
+        if (this.selectedTicket != null) {
             selectedTicket.id = Integer.parseInt(active.nrField.getText());
             selectedTicket.name = active.nameField.getText();
             selectedTicket.berschreibung = active.beschreibungsFeld.getText();
             selectedTicket.prioritaet = active.priorityBox.getSelectionModel().getSelectedItem().id;
             selectedTicket.status = active.statusBox.getSelectionModel().getSelectedItem().id;
+
+            ticketListView.refresh();
+
+            ticketListView.setItems(list);
         } else {
             Ticket newTicket = new Ticket();
 
@@ -169,7 +184,6 @@ public class Controller {
 
             ticketListView.getItems().add(newTicket);
         }
-        ticketListView.refresh();
 
         writeTicketToFile();
     }
@@ -178,7 +192,7 @@ public class Controller {
         try {
             BufferedWriter bw = new BufferedWriter(new FileWriter("tickets.csv"));
 
-            for (Ticket t : list) {
+            for (Ticket t : ticketListView.getItems()) {
                 bw.write(t.newCSVLine());
             }
             bw.flush();
