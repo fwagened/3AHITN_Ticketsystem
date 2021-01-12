@@ -24,7 +24,7 @@ public class TicketsController {
         nrField.setText(Integer.toString(t.id));
         nameField.setText(t.name);
         beschreibungsFeld.setText(t.berschreibung);
-        statusBox.setItems(Status.loadFile("stati.csv"));
+        statusBox.setItems(Status.loadlist());
         priorityBox.setItems(Priority.loadlist());
 
         for (Status s : statusBox.getItems()) {

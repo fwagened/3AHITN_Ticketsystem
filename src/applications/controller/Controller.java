@@ -61,7 +61,7 @@ public class Controller {
 
     public void initialize() {
         ticketListView.setItems(Ticket.loadFile("tickets.csv"));
-        filterStatusComboBox.setItems(Status.loadFile("stati.csv"));
+        filterStatusComboBox.setItems(Status.loadlist());
         filterPrioritätComboBox.setItems(Priority.loadlist());
         list = Ticket.loadFile("ticket.csv");
     }
@@ -137,7 +137,7 @@ public class Controller {
         active.nrField.clear();
         active.nameField.clear();
         active.beschreibungsFeld.clear();
-        active.statusBox.setItems(Status.loadFile("stati.csv"));
+        active.statusBox.setItems(Status.loadlist());
         active.priorityBox.setItems(Priority.loadlist());
 
         this.selectedTicket = null;
