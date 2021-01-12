@@ -10,5 +10,6 @@
     <orderEntry type="library" name="javafx11" level="application" />
     <orderEntry type="library" name="javafx-swt" level="application" />
     <orderEntry type="library" name="javafx11.02" level="application" />
+    <orderEntry type="library" name="access" level="project" />
   </component>
 </module>

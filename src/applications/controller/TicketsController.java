@@ -25,7 +25,7 @@ public class TicketsController {
         nameField.setText(t.name);
         beschreibungsFeld.setText(t.berschreibung);
         statusBox.setItems(Status.loadFile("stati.csv"));
-        priorityBox.setItems(Priority.loadFile("priorities.csv"));
+        priorityBox.setItems(Priority.loadlist());
 
         for (Status s : statusBox.getItems()) {
             if (s.id == t.status) {

@@ -24,7 +24,7 @@ public class PriorityController {
     private Priority selectedPriority = null;
 
     public void initialize() {
-        listViewPriorities.setItems(Priority.loadFile("priorities.csv"));
+        listViewPriorities.setItems(Priority.loadlist());
     }
 
 
