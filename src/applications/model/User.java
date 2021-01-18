@@ -6,6 +6,10 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 
 public class User {
     public int id;
@@ -19,6 +23,36 @@ public class User {
 
     public String toString() {
         return id + " - " + title + " - " + name + " - " + street + " - " + plz + " - " + city + " - " + land + " - " + abteilung;
+    }
+
+    public static  ObservableList<User> loadlist() {
+        ObservableList<User> list = FXCollections.observableArrayList();
+
+        try{
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM users");
+
+            while (result.next()) {
+                User u = new User();
+                u.id = result.getInt("user_id");
+                u.name = result.getString("name");
+                u.title = result.getString("title");
+                u.street = result.getString("street");
+                u.plz = result.getInt("zip");
+                u.city = result.getString("city");
+                u.land = result.getString("country");
+                u.abteilung = result.getInt("department_id");
+
+                list.add(u);
+            }
+        } catch (SQLException throwables){
+
+        }
+
+        return list;
     }
 
     public static ObservableList<User> loadFile() {

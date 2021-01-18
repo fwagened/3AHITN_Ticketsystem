@@ -31,7 +31,7 @@ public class DepartmentController {
 
 
     public void initialize () {
-        listViewAbteilung.setItems(Department.loadFile());
+        listViewAbteilung.setItems(Department.loadlist());
     }
 
 

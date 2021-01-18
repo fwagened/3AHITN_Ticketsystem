@@ -60,10 +60,10 @@ public class Controller {
     }
 
     public void initialize() {
-        ticketListView.setItems(Ticket.loadFile("tickets.csv"));
+        ticketListView.setItems(Ticket.loadlist());
         filterStatusComboBox.setItems(Status.loadlist());
         filterPrioritätComboBox.setItems(Priority.loadlist());
-        list = Ticket.loadFile("ticket.csv");
+        list = Ticket.loadlist();
     }
 
     public void ticketListViewClicked(MouseEvent mouseEvent) {

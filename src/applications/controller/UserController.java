@@ -32,7 +32,7 @@ public class UserController {
     private User selectedUser = null;
 
     public void initialize () {
-        listViewUser.setItems(User.loadFile());
+        listViewUser.setItems(User.loadlist());
     }
 
     public void listViewClicked(MouseEvent mouseEvent) {
