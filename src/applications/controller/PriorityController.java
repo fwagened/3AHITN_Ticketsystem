@@ -45,12 +45,22 @@ public class PriorityController {
     }
 
     public void saveButtonClicked(ActionEvent actionEvent) {
-        
+        if (selectedPriority != null) {
+            selectedPriority.name = prioritiTextField.getText();
+
+            listViewPriorities.refresh();
+
+            selectedPriority.update(); // aktualisiere in Datenbank
+        }
     }
 
     public void neuButtonCLicked(ActionEvent actionEvent) {
     }
 
     public void loeschenButtonCLicked(ActionEvent actionEvent) {
+        prioritiTextField.clear();
+        listViewPriorities.getItems().remove(selectedPriority);
+
+        selectedPriority.delete();
     }
 }
