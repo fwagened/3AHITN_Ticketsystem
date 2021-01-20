@@ -58,7 +58,19 @@ public class UserController {
     }
 
     public void saveButtonClicked(ActionEvent actionEvent) {
+        if (selectedUser != null) {
+            selectedUser.name = nameField.getText();
+            selectedUser.id = Integer.parseInt(idField.getText());
+            selectedUser.title = titleField.getText();
+            selectedUser.plz = Integer.parseInt(plzField.getText());
+            selectedUser.city = cityField.getText();
+            selectedUser.land = landField.getText();
+            selectedUser.street = streetField.getText();
 
+            listViewUser.refresh();
+
+            selectedUser.update(); // aktualisiere in Datenbank
+        }
     }
 
     public void neuButtonCLicked(ActionEvent actionEvent) {

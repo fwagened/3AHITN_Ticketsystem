@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class User {
     public int id;
@@ -23,6 +20,27 @@ public class User {
 
     public String toString() {
         return id + " - " + title + " - " + name + " - " + street + " - " + plz + " - " + city + " - " + land + " - " + abteilung;
+    }
+
+    public void update() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            PreparedStatement statement = null;
+            statement = connection.prepareStatement("UPDATE users SET name = ?, title = ?, street = ?, zip = ?, city = ?, country = ? WHERE user_id = ? ");
+            statement.setString(1, name);
+            statement.setString(2, title);
+            statement.setString(3, street);
+            statement.setInt(4, plz);
+            statement.setString(5, city);
+            statement.setString(6, land);
+
+            statement.setInt(7, id);
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static  ObservableList<User> loadlist() {

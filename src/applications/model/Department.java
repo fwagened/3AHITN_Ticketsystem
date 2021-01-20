@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Department {
     public int departmentId = 0;
@@ -19,6 +16,21 @@ public class Department {
 
     public String toString() {
         return departmentId + " - " + departmentName;
+    }
+
+    public void update() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            PreparedStatement statement = null;
+            statement = connection.prepareStatement("UPDATE departments SET name = ? WHERE department_id = ?");
+            statement.setString(1, departmentName);
+            statement.setInt(2, departmentId);
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static  ObservableList<Department> loadlist() {
