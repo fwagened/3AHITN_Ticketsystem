@@ -28,8 +28,11 @@ public class User {
         try {
             Connection connection = AccessDb.getConnection();
 
-            PreparedStatement statement = null;
+            Statement statement = null;
+            statement = connection.createStatement();
             statement.executeUpdate("DELETE FROM users WHERE user_id = " + id);
+
+
         } catch (SQLException e) {
             e.printStackTrace();
         }
