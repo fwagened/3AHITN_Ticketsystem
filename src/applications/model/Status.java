@@ -20,6 +20,17 @@ public class Status {
         return id + " - " + status;
     }
 
+    public void delete() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM stati WHERE status_id = " + id);
+        } catch (SQLException throwables) {
+        }
+    }
+
     public static  ObservableList<Status> loadlist() {
         ObservableList<Status> list = FXCollections.observableArrayList();
 

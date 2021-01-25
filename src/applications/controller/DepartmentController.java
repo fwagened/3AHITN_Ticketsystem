@@ -41,6 +41,10 @@ public class DepartmentController {
     }
 
     public void loeschenButtonlicked(ActionEvent actionEvent) {
+        abteilungTextfield.clear();
+        listViewAbteilung.getItems().remove(selectedDepartment);
+
+        selectedDepartment.delete();
     }
 
     public void neuButtonClicked(ActionEvent actionEvent) {

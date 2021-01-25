@@ -66,6 +66,17 @@ public class UserController {
     }
 
     public void loeschenButtonCLicked(ActionEvent actionEvent) {
+        titleField.clear();
+        nameField.clear();
+        streetField.clear();
+        plzField.clear();
+        cityField.clear();
+        landField.clear();
+        idField.clear();
+
+        listViewUser.getItems().remove(selectedUser);
+
+        selectedUser.delete();
 
     }
 }

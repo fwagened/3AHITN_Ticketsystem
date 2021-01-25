@@ -21,6 +21,19 @@ public class Department {
         return departmentId + " - " + departmentName;
     }
 
+
+
+    public void delete() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            statement.executeUpdate("DELETE FROM departments WHERE department_id = " + departmentId);
+        } catch (SQLException throwables) {
+        }
+    }
+
     public static  ObservableList<Department> loadlist() {
         ObservableList<Department> list = FXCollections.observableArrayList();
 

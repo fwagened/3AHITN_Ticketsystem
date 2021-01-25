@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class User {
     public int id;
@@ -23,6 +20,18 @@ public class User {
 
     public String toString() {
         return id + " - " + title + " - " + name + " - " + street + " - " + plz + " - " + city + " - " + land + " - " + abteilung;
+    }
+
+
+    public void delete() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            PreparedStatement statement = null;
+            statement.executeUpdate("DELETE FROM users WHERE user_id = " + id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
 
     public static  ObservableList<User> loadlist() {

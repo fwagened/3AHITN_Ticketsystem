@@ -31,9 +31,14 @@ public class StatusController {
 
 
     public void loeschenButtonClicked(ActionEvent actionEvent) {
+        statusTextfield.clear();
+        listViewStati.getItems().remove(selectedStatus);
+
+        selectedStatus.delete();
     }
 
     public void speichernButtonClicked(ActionEvent actionEvent) {
+
     }
 
     public void abbrechenButtonClicked(ActionEvent actionEvent) {
