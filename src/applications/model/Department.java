@@ -18,6 +18,26 @@ public class Department {
         return departmentId + " - " + departmentName;
     }
 
+    public static Department getById(int id) {
+        Department obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM departments WHERE id = " + id);
+
+            if (result.next()) {
+                obj.departmentId = result.getInt("department_id");
+                obj.departmentName = result.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return obj;
+    }
+
 
 
     public void delete() {

@@ -26,8 +26,8 @@ public class AccessDb {
         //Wenn connection noch nicht befüllt wurde (connection == null)
         if (connection == null){
             try{
-               //connection = DriverManager.getConnection("jdbc:ucanaccess://D:/Schule/HTL-Steyr/HTL-Steyr 3.Klasse/ITP2/Ticketsystem/db/Ticketsystem_Felix_Wageneder.accdb");
-                connection = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/flado/Dokumente/Schule/2AHITN/SEW/Java/3AHITN_Ticketsystem/db/Ticketsystem_Felix_Wageneder.accdb");
+               connection = DriverManager.getConnection("jdbc:ucanaccess://D:/Schule/HTL-Steyr/HTL-Steyr 3.Klasse/ITP2/Ticketsystem/db/Ticketsystem_Felix_Wageneder.accdb");
+                //connection = DriverManager.getConnection("jdbc:ucanaccess://C:/Users/flado/Dokumente/Schule/2AHITN/SEW/Java/3AHITN_Ticketsystem/db/Ticketsystem_Felix_Wageneder.accdb");
             } catch (SQLException throwables){
 
             }

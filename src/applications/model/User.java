@@ -22,8 +22,6 @@ public class User {
         return id + " - " + title + " - " + name + " - " + street + " - " + plz + " - " + city + " - " + land + " - " + abteilung;
     }
 
-
-
     public void delete() {
         try {
             Connection connection = AccessDb.getConnection();
