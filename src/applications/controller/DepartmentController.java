@@ -38,6 +38,13 @@ public class DepartmentController {
 
 
     public void speichernButtonClicked(ActionEvent actionEvent) {
+        if (selectedDepartment != null) {
+            selectedDepartment.departmentName = abteilungTextfield.getText();
+
+            listViewAbteilung.refresh();
+
+            selectedDepartment.update(); // aktualisiere in Datenbank
+        }
     }
 
     public void loeschenButtonlicked(ActionEvent actionEvent) {

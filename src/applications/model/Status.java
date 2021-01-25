@@ -6,10 +6,7 @@ import javafx.collections.ObservableList;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
-import java.sql.Connection;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
+import java.sql.*;
 
 public class Status {
     public int id;
@@ -28,6 +25,21 @@ public class Status {
             statement = connection.createStatement();
             statement.executeUpdate("DELETE FROM stati WHERE status_id = " + id);
         } catch (SQLException throwables) {
+        }
+    }
+
+    public void update() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            PreparedStatement statement = null;
+            statement = connection.prepareStatement("UPDATE stati SET name = ? WHERE status_id = ?");
+            statement.setString(1, status);
+            statement.setInt(2, id);
+
+            statement.execute();
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
     }
 

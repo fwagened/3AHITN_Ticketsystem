@@ -38,6 +38,13 @@ public class StatusController {
     }
 
     public void speichernButtonClicked(ActionEvent actionEvent) {
+        if (selectedStatus != null) {
+            selectedStatus.status = statusTextfield.getText();
+
+            listViewStati.refresh();
+
+            selectedStatus.update(); // aktualisiere in Datenbank
+        }
 
     }
 
