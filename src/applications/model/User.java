@@ -22,6 +22,19 @@ public class User {
         return id + " - " + title + " - " + name + " - " + street + " - " + plz + " - " + city + " - " + land + " - " + abteilung;
     }
 
+
+
+    public void delete() {
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            PreparedStatement statement = null;
+            statement.executeUpdate("DELETE FROM users WHERE user_id = " + id);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
     public void update() {
         try {
             Connection connection = AccessDb.getConnection();
@@ -43,17 +56,6 @@ public class User {
         }
     }
 
-
-    public void delete() {
-        try {
-            Connection connection = AccessDb.getConnection();
-
-            PreparedStatement statement = null;
-            statement.executeUpdate("DELETE FROM users WHERE user_id = " + id);
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }
-    }
 
     public static  ObservableList<User> loadlist() {
         ObservableList<User> list = FXCollections.observableArrayList();
