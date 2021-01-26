@@ -28,14 +28,14 @@ public class TicketsController {
         priorityBox.setItems(Priority.loadlist());
 
         for (Status s : statusBox.getItems()) {
-            if (s.id == t.status) {
+            if (s.id == t.status.id) {
                 statusBox.getSelectionModel().select(s);
                 break;
             }
         }
 
         for (Priority p : priorityBox.getItems()) {
-            if (p.id == t.prioritaet) {
+            if (p.id == t.prioritaet.id) {
                 priorityBox.getSelectionModel().select(p);
                 break;
             }
@@ -46,8 +46,11 @@ public class TicketsController {
         /**
          * aktualisieren der Ticket - Daten
          */
+        ticket.id = Integer.parseInt(nrField.getText());
         ticket.name = nameField.getText();
-        // ....
+        ticket.berschreibung = beschreibungsFeld.getText();
+        ticket.status = statusBox.getValue();
+        ticket.prioritaet = priorityBox.getValue();
 
         return  ticket;
     }

@@ -18,6 +18,11 @@ public class Department {
         return departmentId + " - " + departmentName;
     }
 
+    public Department (int departmentId, String departmentName) {
+        this.departmentId = departmentId;
+        this.departmentName = departmentName;
+    }
+
     public static Department getById(int id) {
         Department obj = null;
         try {
@@ -25,11 +30,10 @@ public class Department {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM departments WHERE id = " + id);
+            ResultSet result = statement.executeQuery("SELECT * FROM departments WHERE department_id = " + id);
 
             if (result.next()) {
-                obj.departmentId = result.getInt("department_id");
-                obj.departmentName = result.getString("name");
+                obj = new Department(result.getInt("department_id"), result.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
@@ -77,9 +81,7 @@ public class Department {
             ResultSet result = statement.executeQuery("SELECT * FROM departments");
 
             while (result.next()) {
-                Department d = new Department();
-                d.departmentId = result.getInt("department_id");
-                d.departmentName = result.getString("Name");
+                Department d = new Department(result.getInt("department_id"), result.getString("Name"));
 
                 list.add(d);
             }
@@ -101,11 +103,8 @@ public class Department {
                 while ((s = br.readLine()) != null) {
                     // s enthält die gesamte Zeile
                     s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Department department = new Department();
-
                     String[] words = s.split(";");
-                    department.departmentId = Integer.parseInt(words[0]);
-                    department.departmentName = words[1];
+                    Department department = new Department(Integer.parseInt(words[0]), words[1]);
 
                     result.add(department);
                 }
@@ -118,7 +117,4 @@ public class Department {
 
         return result;
     }
-
-
-
 }

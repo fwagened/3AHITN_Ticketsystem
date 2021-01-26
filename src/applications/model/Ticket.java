@@ -15,11 +15,20 @@ public class Ticket {
     public int id;
     public String name;
     public String berschreibung;
-    public int status;
-    public int prioritaet;
+    public Status status;
+    public Priority prioritaet;
 
     public String toString() {
         return id + " - " + name;
+    }
+
+    public Ticket(int id, String name, String beschreibung, int statusId, int prioritätId) {
+        this.id = id;
+        this.name = name;
+        this.berschreibung = beschreibung;
+
+        this.status = Status.getById(statusId);
+        this.prioritaet = Priority.getById(prioritätId);
     }
 
     public static  ObservableList<Ticket> loadlist() {
@@ -33,12 +42,11 @@ public class Ticket {
             ResultSet result = statement.executeQuery("SELECT * FROM tickets");
 
             while (result.next()) {
-                Ticket t = new Ticket();
-                t.id = result.getInt("ticket_id");
-                t.name = result.getString("name");
-                t.berschreibung = result.getString("desc");
-                t.prioritaet = Integer.parseInt(result.getString("priority_id"));
-                t.status = Integer.parseInt(result.getString("status_id"));
+                Ticket t = new Ticket(result.getInt("ticket_id"),
+                        result.getString("name"),
+                        result.getString("desc"),
+                        result.getInt("status_id"),
+                        result.getInt("priority_id"));
 
                 list.add(t);
             }
@@ -60,14 +68,12 @@ public class Ticket {
                 while ((s = br.readLine()) != null) {
                     // s enthält die gesamte Zeile
                     s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Ticket t = new Ticket();
-
                     String[] words = s.split(";");
-                    t.id = Integer.parseInt(words[0]);
-                    t.name = words[1];
-                    t.berschreibung = words[2];
-                    t.status = Integer.parseInt(words[3]);
-                    t.prioritaet = Integer.parseInt(words[4]);
+                    Ticket t = new Ticket(Integer.parseInt(words[0]),
+                            words[1],
+                            words[2],
+                            Integer.parseInt(words[3]),
+                            Integer.parseInt(words[4]));
 
                     result.add(t);
                 }

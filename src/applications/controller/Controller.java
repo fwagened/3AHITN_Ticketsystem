@@ -104,7 +104,7 @@ public class Controller {
         searchlist.clear();
 
         for (Ticket t : list) {
-            if (t.status == searchedItem.id) {
+            if (t.status == Status.getById(searchedItem.id)) {
                 searchlist.add(t);
             }
         }
@@ -116,7 +116,7 @@ public class Controller {
         searchlist.clear();
 
         for (Ticket t : list) {
-            if (t.prioritaet == searchedItem.id) {
+            if (t.prioritaet == Priority.getById(searchedItem.id)) {
                 searchlist.add(t);
             }
         }
@@ -167,20 +167,18 @@ public class Controller {
             selectedTicket.id = Integer.parseInt(active.nrField.getText());
             selectedTicket.name = active.nameField.getText();
             selectedTicket.berschreibung = active.beschreibungsFeld.getText();
-            selectedTicket.prioritaet = active.priorityBox.getSelectionModel().getSelectedItem().id;
-            selectedTicket.status = active.statusBox.getSelectionModel().getSelectedItem().id;
+            selectedTicket.prioritaet = Priority.getById(active.priorityBox.getSelectionModel().getSelectedItem().id);
+            selectedTicket.status = Status.getById(active.statusBox.getSelectionModel().getSelectedItem().id);
 
             ticketListView.refresh();
 
             ticketListView.setItems(list);
         } else {
-            Ticket newTicket = new Ticket();
-
-            newTicket.id = Integer.parseInt(active.nrField.getText());
-            newTicket.name = active.nameField.getText();
-            newTicket.berschreibung = active.beschreibungsFeld.getText();
-            newTicket.prioritaet = active.priorityBox.getSelectionModel().getSelectedItem().id;
-            newTicket.status = active.statusBox.getSelectionModel().getSelectedItem().id;
+            Ticket newTicket = new Ticket(Integer.parseInt(active.nrField.getText()),
+                    active.nameField.getText(),
+                    active.beschreibungsFeld.getText(),
+                    active.statusBox.getSelectionModel().getSelectedItem().id,
+                    active.priorityBox.getSelectionModel().getSelectedItem().id);
 
             ticketListView.getItems().add(newTicket);
         }

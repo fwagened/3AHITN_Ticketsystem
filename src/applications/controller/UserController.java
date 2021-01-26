@@ -1,5 +1,6 @@
 package applications.controller;
 
+import applications.model.Department;
 import applications.model.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -21,7 +22,7 @@ public class UserController {
     public TextField streetField;
     public TextField plzField;
     public TextField cityField;
-    public ComboBox abteilungBox;
+    public ComboBox<Department> abteilungBox;
     public TextField landField;
     public Button abbrechenButton;
     public Button neuButton;
@@ -33,6 +34,7 @@ public class UserController {
 
     public void initialize () {
         listViewUser.setItems(User.loadlist());
+        abteilungBox.setItems(Department.loadlist());
     }
 
     public void listViewClicked(MouseEvent mouseEvent) {
@@ -48,6 +50,7 @@ public class UserController {
             plzField.setText(Integer.toString(selected.plz));
             cityField.setText(selected.city);
             landField.setText(selected.land);
+            abteilungBox.setValue(selected.abteilung);
         }
     }
 
@@ -66,6 +69,7 @@ public class UserController {
             selectedUser.city = cityField.getText();
             selectedUser.land = landField.getText();
             selectedUser.street = streetField.getText();
+            selectedUser.abteilung = abteilungBox.getValue();
 
             listViewUser.refresh();
 

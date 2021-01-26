@@ -17,6 +17,31 @@ public class Status {
         return id + " - " + status;
     }
 
+    public Status(int id, String status) {
+        this.id = id;
+        this.status = status;
+    }
+
+    public static Status getById(int id) {
+        Status obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM stati WHERE id =" + id);
+
+            if (result.next()) {
+                obj.id = result.getInt("status_id");
+                obj.status = result.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return obj;
+    }
+
     public void delete() {
         try {
             Connection connection = AccessDb.getConnection();
@@ -54,9 +79,7 @@ public class Status {
             ResultSet result = statement.executeQuery("SELECT * FROM stati");
 
             while (result.next()) {
-                Status s = new Status();
-                s.id = result.getInt("status_id");
-                s.status = result.getString("name");
+                Status s = new Status(result.getInt("status_id"), result.getString("name"));
 
                 list.add(s);
             }
@@ -78,11 +101,8 @@ public class Status {
                 while ((s = br.readLine()) != null) {
                     // s enthält die gesamte Zeile
                     s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Status status = new Status();
-
                     String[] words = s.split(";");
-                    status.id = Integer.parseInt(words[0]);
-                    status.status = words[1];
+                    Status status = new Status(Integer.parseInt(words[0]), words[1]);
 
                     result.add(status);
                 }

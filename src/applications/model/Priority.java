@@ -16,6 +16,31 @@ public class Priority {
         return id + " - " + name;
     }
 
+    public Priority(int id, String name) {
+        this.id = id;
+        this.name = name;
+    }
+
+    public static Priority getById(int id) {
+        Priority obj = null;
+        try {
+            Connection connection = AccessDb.getConnection();
+
+            Statement statement = null;
+            statement = connection.createStatement();
+            ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE id =" + id);
+
+            if (result.next()) {
+                obj.id = result.getInt("priority_id");
+                obj.name = result.getString("name");
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return obj;
+    }
+
     public void delete() {
         try {
             Connection connection = AccessDb.getConnection();
@@ -53,9 +78,7 @@ public class Priority {
             ResultSet result = statement.executeQuery("SELECT * FROM priorities");
 
             while (result.next()) {
-                Priority p = new Priority();
-                p.id = result.getInt("priority_id");
-                p.name = result.getString("name");
+                Priority p = new Priority(result.getInt("priority_id"), result.getString("name"));
 
                 list.add(p);
             }
@@ -77,11 +100,8 @@ public class Priority {
                 while ((s = br.readLine()) != null) {
                     // s enthält die gesamte Zeile
                     s = s.replace("\"", ""); // ersetze alle " in der Zeile
-                    Priority p = new Priority();
-
                     String[] words = s.split(";");
-                    p.id = Integer.parseInt(words[0]);
-                    p.name = words[1];
+                    Priority p = new Priority(Integer.parseInt(words[0]), words[1]);
 
                     result.add(p); // füge Artikel zur Liste hinzu
                 }
