@@ -1,3 +1,2 @@
-1;Fehlerbehebung Bezahlvorgang;Beim Abschließen einer Bestellung kommt es zu einer Nullpointer-Exception.;1;4
-2;Fertigstellen ToDo-System;Es soll jedes ToDo auf der rechten Seite angezeigt werden.;2;3
-3;TEst;Das ist ein TEst;1;1
+1;Fl-Studio Download-Seite;Programm welches es ermöglicht fertige Beats von FL-Studio zu speichern;3 - Bereit für test;1 - niedrig
+2;Coffee-Time Programm;Programm welches ermöglicht bei einer Kaffeemaschine eine Zeit einzustellen, bei der sie automatisch Kaffee braut;1 - Offen;1 - niedrig

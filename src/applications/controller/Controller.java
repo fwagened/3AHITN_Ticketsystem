@@ -29,9 +29,9 @@ public class Controller {
      */
     public TextField filterNameTextfield;
     public ComboBox<Status> filterStatusComboBox;
-    public ComboBox<Priority> filterPrioritätComboBox;
 
     public TicketsController active = null;
+    public ComboBox<Priority> filterPrioritaetComboBox;
 
     ObservableList<Ticket> list = FXCollections.observableArrayList();
     ObservableList<Ticket> searchlist = FXCollections.observableArrayList();
@@ -62,7 +62,7 @@ public class Controller {
     public void initialize() {
         ticketListView.setItems(Ticket.loadlist());
         filterStatusComboBox.setItems(Status.loadlist());
-        filterPrioritätComboBox.setItems(Priority.loadlist());
+        filterPrioritaetComboBox.setItems(Priority.loadlist());
         list = Ticket.loadlist();
     }
 
@@ -112,7 +112,7 @@ public class Controller {
     }
 
     public void searchPrioritaet(MouseEvent mouseEvent) {
-        Priority searchedItem = filterPrioritätComboBox.getValue();
+        Priority searchedItem = filterPrioritaetComboBox.getValue();
         searchlist.clear();
 
         for (Ticket t : list) {
