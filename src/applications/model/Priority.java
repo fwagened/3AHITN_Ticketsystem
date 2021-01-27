@@ -28,11 +28,10 @@ public class Priority {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE id =" + id);
+            ResultSet result = statement.executeQuery("SELECT * FROM priorities WHERE priority_id =" + id);
 
             if (result.next()) {
-                obj.id = result.getInt("priority_id");
-                obj.name = result.getString("name");
+                obj = new Priority(result.getInt("priority_id"), result.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();

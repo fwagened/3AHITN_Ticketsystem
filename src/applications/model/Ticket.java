@@ -22,13 +22,13 @@ public class Ticket {
         return id + " - " + name;
     }
 
-    public Ticket(int id, String name, String beschreibung, int statusId, int prioritätId) {
+    public Ticket(int id, String name, String beschreibung, int statusId, int prioritaet) {
         this.id = id;
         this.name = name;
         this.berschreibung = beschreibung;
 
         this.status = Status.getById(statusId);
-        this.prioritaet = Priority.getById(prioritätId);
+        this.prioritaet = Priority.getById(prioritaet);
     }
 
     public static  ObservableList<Ticket> loadlist() {
@@ -86,7 +86,7 @@ public class Ticket {
         return result;
     }
 
-    public String newCSVLine(){
+    public String newCSVLine() {
         return id + ";" + name + ";" + berschreibung + ";" + status + ";" + prioritaet +  "\n";
     }
 }

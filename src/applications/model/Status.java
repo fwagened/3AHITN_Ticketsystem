@@ -29,11 +29,10 @@ public class Status {
 
             Statement statement = null;
             statement = connection.createStatement();
-            ResultSet result = statement.executeQuery("SELECT * FROM stati WHERE id =" + id);
+            ResultSet result = statement.executeQuery("SELECT * FROM stati WHERE status_id =" + id);
 
             if (result.next()) {
-                obj.id = result.getInt("status_id");
-                obj.status = result.getString("name");
+                obj = new Status(result.getInt("status_id"), result.getString("name"));
             }
         } catch (SQLException e) {
             e.printStackTrace();
